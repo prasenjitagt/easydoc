@@ -26,7 +26,7 @@ export default function RootLayout({
           <Navbar />
         </nav>
         <main
-          className=' shadow-[rgba(0,_0,_0,_0.4)_0px_30px_90px] rounded-md mx-20 p-4 bg-secondary-content max-w-3xl  min-w-[300px]'
+          className=' rounded-md mx-20 p-4 bg-primary-content  max-w-7xl  min-w-[400px]'
         >
           {children}
         </main>

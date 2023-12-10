@@ -15,7 +15,7 @@ model Doctor {
   experience     String
   name           String
   opdTime        String
-  post           String
+  fees           String
   specialization String
   docImageUrl    String
   createdAt      DateTime @default(now())

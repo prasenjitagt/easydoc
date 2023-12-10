@@ -21,11 +21,11 @@ async function addDoctor(formData: FormData |
   const degree = formData.get("degree")?.toString();
   const specialization = formData.get("specialization")?.toString();
   const opdTime = formData.get("opdTime")?.toString();
-  const post = formData.get("post")?.toString();
+  const fees = formData.get("fees")?.toString();
   const experience = formData.get("experience")?.toString();
 
   /***** Checking if any value is null *****/
-  if (!profileImage || !name || !description || !clinicLocation || !degree || !specialization || !opdTime || !post || !experience) {
+  if (!profileImage || !name || !description || !clinicLocation || !degree || !specialization || !opdTime || !fees || !experience) {
     throw Error('Missing required field');
   }
 
@@ -54,7 +54,7 @@ async function addDoctor(formData: FormData |
 
   /***** Saving into mongodb *****/
   await prisma.doctor.create({
-    data: { clinicLocation, degree, description, experience, name, opdTime, post, specialization, docImageUrl }
+    data: { clinicLocation, degree, description, experience, name, opdTime, fees, specialization, docImageUrl }
   })
 
 
@@ -66,9 +66,9 @@ async function addDoctor(formData: FormData |
 export default function DoctorDesciption() {
   return (
     <div
-      className=''>
+      className='bg-secondary-content shadow-[rgba(0,_0,_0,_0.4)_0px_30px_90px] p-3 rounded-md min-w-[370px]'>
 
-      <h1 className='text-lg mb-3 font-bold'>Work With Easy-Doc</h1>
+      <h1 className='mb-3 font-bold'>Work With Easy-Doc</h1>
 
       <form action={addDoctor}>
 
@@ -145,13 +145,13 @@ export default function DoctorDesciption() {
 
           <section>
 
-            <p className="mb-2">Post</p>
+            <p className="mb-2">Fees in Rs (₹)</p>
 
             <input
               required
-              name='post'
-              placeholder='Post'
-              type='text'
+              name='fees'
+              placeholder='e.g. 500'
+              type='number'
               className='px-1 rounded-md mb-3 w-full input input-info inputBlueShadow'
             />
 
@@ -160,7 +160,7 @@ export default function DoctorDesciption() {
 
           <section>
 
-            <p className="mb-2">Experience in months</p>
+            <p className="mb-2">Experience (months)</p>
 
             <input
               required
