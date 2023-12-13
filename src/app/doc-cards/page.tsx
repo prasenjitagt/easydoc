@@ -17,7 +17,8 @@ const DocCards = async () => {
 
     return (
         <div>
-            {doctors.map(doctor => <EachDocCard key={doctor.id} doctor={doctor} />)}
+            {/* {doctors.map(doctor => <EachDocCard key={doctor.id} doctor={doctor} />)} */}
+            <EachDocCard doctor={doctors[1]} />
         </div>
     )
 }
