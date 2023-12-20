@@ -22,9 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} flex flex-col items-center`}>
-        <nav className='drop-shadow-xl min-w-full h-5 mb-20'>
+        {/* <nav className='drop-shadow-xl min-w-full h-5 mb-20'>
           <Navbar />
-        </nav>
+        </nav> */}
         <main
           className=' rounded-md mx-20 p-4   max-w-7xl  min-w-[400px]'
         >

@@ -7,19 +7,21 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Doctor {
-  id             String   @id @default(auto()) @map("_id") @db.ObjectId
-  clinicLocation String
-  degree         String
-  description    String
-  experience     String
-  name           String
-  opdTime        String
-  fees           String
-  specialization String
-  docImageUrl    String
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+type DoctorsClinic {
+  fromTime String
+  locatin  String
+  toTime   String
+  weekday  String
+}
 
-  @@map("doctors")
+model doctors {
+  id             String          @id @default(auto()) @map("_id") @db.ObjectId
+  about          String
+  clinic         DoctorsClinic[]
+  experience     Int
+  fee            Int
+  imgUrl         String
+  name           String
+  qualification  String
+  specialization String
 }

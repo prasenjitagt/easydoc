@@ -1,3 +1,5 @@
+
+
 import { prisma } from "@/lib/db/prisma";
 import { redirect } from "next/navigation";
 import FormSubButton from "@/components/FormSubButton";
@@ -12,6 +14,7 @@ export const metadata = {
 async function addDoctor(formData: FormData |
   any) {
   "use server";
+
 
   /***** Getting Form Data *****/
   const profileImage = formData.get("profileImage");
