@@ -1,17 +1,17 @@
 
-import { Doctor } from '@prisma/client'
+import { doctor } from '@prisma/client'
 import Image from 'next/image'
 import Link from 'next/link'
 
 
 
 interface DocCardsProp {
-    doctor: Doctor
+    doctor: doctor
 }
 
 
 
-const EachDocCard = ({ doctor }: Doctor | any) => {
+const EachDocCard = ({ doctor }: doctor) => {
 
     const monthToYear = (montStr: string): string => {
 
@@ -40,7 +40,7 @@ const EachDocCard = ({ doctor }: Doctor | any) => {
 
                     <div className="avatar">
                         <div className="w-36 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                            <Image src={doctor.docImageUrl} alt={doctor.name} width={150} height={150} className='w-full max-w-sm'
+                            <Image src={doctor.imgUrl} alt={doctor.name} width={150} height={150} className='w-full max-w-sm'
                                 priority
                             />
 
@@ -85,7 +85,7 @@ const EachDocCard = ({ doctor }: Doctor | any) => {
                 <section>
 
                     <div className="text-justify text-sm">
-                        <p>{doctor.description}</p>
+                        <p>{doctor.about}</p>
                     </div>
 
 

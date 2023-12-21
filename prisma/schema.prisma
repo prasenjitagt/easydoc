@@ -14,7 +14,7 @@ type DoctorsClinic {
   weekday  String
 }
 
-model doctors {
+model doctor {
   id             String          @id @default(auto()) @map("_id") @db.ObjectId
   about          String
   clinic         DoctorsClinic[]
@@ -24,4 +24,6 @@ model doctors {
   name           String
   qualification  String
   specialization String
+
+  @@map("doctors")
 }

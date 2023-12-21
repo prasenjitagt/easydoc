@@ -2,6 +2,11 @@
 const nextConfig = {
     images:{
         remotePatterns:[{hostname:"images.unsplash.com"}]
+    },
+    experimental:{
+        serverActions: {
+            bodySizeLimit: '100mb',
+          },
     }
 }
 
