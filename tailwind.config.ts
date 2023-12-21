@@ -15,15 +15,15 @@ const config: Config = {
         
 "secondary": "#006b00",
         
-"accent": "#bf0000",
+"accent": "#fff200",
         
 "neutral": "#03141d",
         
 "base-100": "#fcfcfc",
         
-"info": "#55ddff",
+"info": "#00ccff",
         
-"success": "#6f9e00",
+"success": "#03c03c",
         
 "warning": "#e62c00",
         
