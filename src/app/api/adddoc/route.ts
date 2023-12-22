@@ -15,8 +15,10 @@ export  async function  POST(req:any) {
     const localDocImageUrl = body[3];
     const imgUrl = localDocImageUrl;
 
-    const {name,qualification,specialization,fee,experience,about,clinic} = formdata;
+    const {name,qualification,fee,experience,about,clinic} = formdata;
 
+    //converting specialization to upper case
+    const specialization = formdata.specialization.toUpperCase();
    
     //using sharp to reduce the size of the image 
     const resizedImgBuffer = await sharp(imgBuffer)

@@ -8,6 +8,8 @@ const nextConfig = {
             bodySizeLimit: '100mb',
           },
     }
+   
 }
+
 
 module.exports = nextConfig

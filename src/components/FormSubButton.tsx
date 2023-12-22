@@ -1,16 +1,23 @@
 "use client"
 
+
 import { ComponentProps } from "react"
 import { useFormStatus } from "react-dom"
 
 
-type formSubButtonProps = {
+type FormSubButtonProps = {
+
     children: React.ReactNode,
     className?: string,
 
 } & ComponentProps<"button">
 
-const FormSubButton = ({ children, className, ...props }: formSubButtonProps) => {
+
+
+
+export default function FormSubButton(
+    { children, className, ...props }: FormSubButtonProps
+) {
 
     const { pending } = useFormStatus();
 
@@ -18,14 +25,12 @@ const FormSubButton = ({ children, className, ...props }: formSubButtonProps) =>
     return (
         <button
             {...props}
+            className={`${className}`}
             disabled={pending}
-            className={`btn btn-info ${className}`}
         >
-            {pending && <span className="loading loading-spinner text-primary" />}
+            {pending && <span className="loading loading-spinner text-warning" />}
             {children}
-
         </button>
     )
 }
 
-export default FormSubButton

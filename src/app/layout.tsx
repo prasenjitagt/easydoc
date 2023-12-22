@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import Navbar from '@/components/Navbar'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,7 +25,7 @@ export default function RootLayout({
           <Navbar />
         </nav> */}
         <main
-          className=' rounded-md mx-20 p-4  w-[100vw] max-w-7xl  min-w-[400px]'
+          className='h-full w-full'
         >
           {children}
         </main>

@@ -27,3 +27,17 @@ model doctor {
 
   @@map("doctors")
 }
+
+model offer {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  imgUrl String
+
+  @@map("offers")
+}
+
+model specialization {
+  id             String @id @default(auto()) @map("_id") @db.ObjectId
+  specialization String
+
+  @@map("specializations")
+}
