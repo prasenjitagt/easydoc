@@ -98,12 +98,12 @@ const Form = () => {
                             <div className="flex flex-col gap-2 mt-5">
 
 
-                                <Link href={`/`} className="btn btn-warning">
+                                <Link href={`/`} className="btn btn-accent">
                                     Home
                                 </Link>
 
 
-                                <Link href={`/check-specialization`} className="btn btn-warning">
+                                <Link href={`/check-specialization`} className="btn btn-accent">
                                     Check Specializations
                                 </Link>
                             </div>

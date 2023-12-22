@@ -41,10 +41,10 @@ const CheckSpecialization = async () => {
             {/* Buttons */}
             <div className="flex flex-col w-min gap-2 mt-5">
 
-                <Link href={`/`} className="btn btn-warning">
+                <Link href={`/`} className="btn btn-accent">
                     Home
                 </Link>
-                <Link href={`/add-specialization`} className="btn btn-warning">
+                <Link href={`/add-specialization`} className="btn btn-accent">
                     Add Specialization
                 </Link>
             </div>
