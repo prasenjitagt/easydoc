@@ -1,7 +1,9 @@
 import { prisma } from "@/lib/db/prisma";
 import { writeFile } from "fs/promises"
 import { NextResponse } from "next/server";
+import path from "path";
 const sharp = require("sharp")
+
 
 export  async function  POST(req:any) {
     //data from the frontend
@@ -9,7 +11,7 @@ export  async function  POST(req:any) {
 
 
     //resolving values from the array that we got from frontend
-    const path = body[0];
+    const imgFileName = body[0];
     const imgBuffer =  Buffer.from(body[1].data);
     const formdata = body[2];
     const localDocImageUrl = body[3];
@@ -26,11 +28,18 @@ export  async function  POST(req:any) {
     .toBuffer();
 
     //saving the image to the local storage
-    await writeFile(path, resizedImgBuffer);
+
+    const imgFolderPath = path.join(process.cwd(),"/public/doc-images/");
+    const fullImgPath = imgFolderPath + imgFileName ;
+
+
+    // saving file to local storage
+    await writeFile(fullImgPath, resizedImgBuffer);
 
 
 
-    //writing data to mongodb 
+
+    // writing data to mongodb 
     await prisma.doctor.create({
         data:{name,about,experience,fee,imgUrl,qualification,specialization,clinic}
     });
@@ -39,6 +48,7 @@ export  async function  POST(req:any) {
 
     //sending response to frontend 
     return NextResponse.json({message:'successful'})
+
 
 
 }

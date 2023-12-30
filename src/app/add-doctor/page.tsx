@@ -7,7 +7,6 @@ import axios from "axios"
 
 
 
-
 export type FormValues = {
   name: string;
   pic: File[];
@@ -48,9 +47,8 @@ const Form = () => {
 
   const { register, handleSubmit, formState, control, getValues, reset } = form;
 
-  const { errors, isSubmitted } = formState;
+  const { errors, isSubmitting } = formState;
 
-  // console.log(isSubmitted);
 
 
   const { fields, append, remove } = useFieldArray({
@@ -61,7 +59,7 @@ const Form = () => {
 
 
 
-  const onFormSubmit = async (formdata: FormValues) => {
+  const OnFormSubmit = async (formdata: FormValues) => {
 
 
     try {
@@ -93,7 +91,7 @@ const Form = () => {
 
       /***** image path , image buffer, form Data and local doctor image url to be saved in db in an array to send  *****/
 
-      const dataWithImg = [path, imgBuffer, formdata, localDocImageUrl];
+      const dataWithImg = [imgName, imgBuffer, formdata, localDocImageUrl];
 
       /***** Sending the data to server *****/
 
@@ -102,6 +100,11 @@ const Form = () => {
       /***** Path for the image *****/
 
       console.log(response.data);
+
+
+
+
+
 
 
 
@@ -138,7 +141,7 @@ const Form = () => {
               Add Doctor ID
             </h1>
 
-            <form onSubmit={handleSubmit(onFormSubmit)} noValidate className=' flex flex-col justify-center '>
+            <form onSubmit={handleSubmit(OnFormSubmit)} noValidate className=' flex flex-col justify-center '>
 
 
               {/* Name  */}
@@ -418,11 +421,13 @@ const Form = () => {
 
 
 
-              <button onClick={() => console.log(isSubmitted)}>check</button>
 
 
               {/* Submit Button */}
-              <button className='btn btn-accent ' type="submit">Submit</button>
+              <button disabled={isSubmitting} className='btn btn-accent ' type="submit">
+                {isSubmitting && <span className="loading loading-spinner text-warning" />}
+                Submit
+              </button>
             </form>
           </div>
 

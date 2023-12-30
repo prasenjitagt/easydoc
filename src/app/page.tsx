@@ -1,8 +1,19 @@
 
+import { prisma } from '@/lib/db/prisma'
+import Image from 'next/image'
 import Link from 'next/link'
 
 
-const Home = () => {
+const Home = async () => {
+
+
+
+  const images = await prisma.doctor.findMany({
+    orderBy: { id: 'desc' }
+  })
+
+
+
   return (
     <div>
       {/* Carousel Section */}
@@ -13,7 +24,14 @@ const Home = () => {
 
       {/* Departments */}
       <section>
+        {images.map((imgDetails, index) => {
 
+          return (
+            <div key={imgDetails.id}>
+              <Image src={imgDetails.imgUrl} width={200} height={200} alt='image' />
+            </div>
+          )
+        })}
       </section>
 
       {/* Buttons */}

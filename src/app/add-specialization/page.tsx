@@ -1,8 +1,10 @@
 
+'use client'
+
 import Link from "next/link"
 import Image from "next/image"
-import { prisma } from "@/lib/db/prisma"
 import FormSubButton from "@/components/FormSubButton"
+import axios from "axios"
 
 
 
@@ -17,7 +19,6 @@ const Form = () => {
 
 
     const onFormSubmit = async (formdata: FormData) => {
-        'use server'
         try {
 
             const specialization = formdata.get('specialization')?.toString().toUpperCase();
@@ -27,9 +28,15 @@ const Form = () => {
 
             }
 
-            await prisma.specialization.create({
-                data: { specialization }
-            })
+
+
+            const data = [specialization];
+
+            /***** Sending the data to server *****/
+
+            const response = await axios.post('api/addspecialization', data);
+
+            console.log(response.data);
 
 
         } catch (error: any) {
